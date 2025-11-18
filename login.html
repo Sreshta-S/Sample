@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Login Form</title>
+<style>
+    body {
+        background-color: #f0f0f0;
+        font-family: Arial, sans-serif;
+    }
+
+    h2{
+        background-color: #4CAF50;
+        color: white;
+        text-align: center;
+        padding: 10px 0;
+        font-size: 24px;
+        margin-bottom: 20px;
+    }
+
+    form {
+        background: white;
+        width: 400px;
+        margin: auto;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    #message {
+        color: red;
+        font-weight: bold;
+    }
+</style>
+<script>
+function validateForm() {
+    let msg = "";
+
+    let fname = document.getElementById("fname").value.trim();
+    let lname = document.getElementById("lname").value.trim();
+    let dob = document.getElementById("dob").value.trim();
+    let age = document.getElementById("age").value.trim();
+    let email = document.getElementById("email").value.trim();
+    let phone = document.getElementById("phone").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let cpassword = document.getElementById("cpassword").value.trim();
+
+    if (fname === "") {
+        msg += "First Name cannot be empty.<br>";
+    }
+
+    if (lname === "") {
+        msg += "Last Name cannot be empty.<br>";
+    }
+
+    if (dob === "") {
+        msg += "Date of Birth cannot be empty.<br>";
+    }
+
+    if (age === "" || isNaN(age)) {
+        msg += "Please enter a valid age.<br>";
+    }
+
+  
+    let emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+        msg += "Invalid email address.<br>";
+    }
+
+    if (phone === "" || isNaN(phone) || phone.length !== 10) {
+        msg += "Please enter a valid 10-digit phone number.<br>";
+    }
+
+    if (password === "" || cpassword === "") {
+        msg += "Password fields cannot be empty.<br>";
+    } else if (password !== cpassword) {
+        msg += "Passwords do not match.<br>";
+    }
+
+
+    if (msg !== "") {
+        document.getElementById("message").innerHTML = msg;
+        return false;
+    }
+
+    alert("Details Submitted Successfully!");
+    return true;
+}
+</script>
+</head>
+
+<body>
+<h2>Set up your Profile!</h2>
+
+<form id="myForm" onsubmit="return validateForm()">
+
+<label for="fname">First Name:</label><br>
+<input type="text" id="fname" name="fname"><br><br>
+
+<label for="lname">Last Name:</label><br>
+<input type="text" id="lname" name="lname"><br><br>
+
+<label for="dob">Date of Birth:</label><br>
+<input type="date" id="dob" name="dob"><br><br>
+
+<label for="age">Age:</label><br>
+<input type="number" id="age" name="age" min="1" max="120"><br><br>
+
+<label>Gender:</label><br>
+<input type="radio" id="male" name="gender" value="Male">
+<label for="male">Male</label><br>
+<input type="radio" id="female" name="gender" value="Female">
+<label for="female">Female</label><br><br>
+
+<label for="email">Email:</label><br>
+<input type="text" id="email" name="email"><br><br>
+
+<label for="phone">Phone Number:</label><br>
+<input type="text" id="phone" name="phone" maxlength="10"><br><br>
+
+<p>Position Available</p>
+<ul>
+<li>Junior Developer</li>
+<li>Mid Level Developer</li>
+<li>Senior Developer</li>
+</ul>
+
+<p>Programming Language</p>
+<ul>
+<li>Java</li>
+<li>C++</li>
+<li>Python</li>
+</ul>
+
+<label for="password">Password:</label><br>
+<input type="password" id="password" name="password"><br><br>
+
+<label for="cpassword">Confirm Password:</label><br>
+<input type="password" id="cpassword" name="cpassword"><br><br>
+
+<p id="message" class="error" style="color:red;"></p>
+
+<input type="submit" value="Submit">
+<a href ="firstpage.html" style="float: right; margin-right: 20px;">Go Back To Home</a>
+
+</form>
+
+</body>
+</html>
