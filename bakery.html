@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweet Bliss Bakery</title>
+  <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script crossorigin src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background: #fdf8f4;
+      color: #3a2c27;
+    }
+    header {
+      background: url("https://images.unsplash.com/photo-1499636136210-6f4ee915583e?w=1200")
+        center/cover no-repeat;
+      height: 300px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(0,0,0,0.6);
+      font-size: 42px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+    .container {
+      padding: 30px;
+      text-align: center;
+    }
+    .subtitle {
+      font-size: 20px;
+      opacity: 0.8;
+      margin-bottom: 30px;
+    }
+    .menu-grid {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 20px;
+    }
+    .item-card {
+      background: white;
+      width: 250px;
+      border-radius: 12px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.15);
+      padding-bottom: 15px;
+      transition: transform 0.2s;
+    }
+    .item-card:hover {
+      transform: scale(1.03);
+    }
+    .item-card img {
+      width: 100%;
+      height: 170px;
+      border-radius: 12px 12px 0 0;
+      object-fit: cover;
+    }
+    .item-card h3 {
+      margin: 10px 0 5px;
+    }
+    .price {
+      font-weight: bold;
+      color: #d67c5d;
+      margin-bottom: 10px;
+    }
+    button {
+      background: #d67c5d;
+      border: none;
+      padding: 10px 14px;
+      border-radius: 6px;
+      color: white;
+      cursor: pointer;
+      font-size: 14px;
+    }
+    button:hover {
+      background: #c06a4e;
+    }
+    footer {
+      margin-top: 50px;
+      padding: 25px;
+      background: #ffe7db;
+      text-align: center;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>Sweet Bliss Bakery 🍰</header>
+  <div id="root"></div>
+  <script type="text/babel">
+    function BakeryApp() {
+      const [count, setCount] = React.useState(0);
+      const menu = [
+  {
+    name: "Chocolate Fudge Cake",
+    price: "$15",
+    img: "https://i.pinimg.com/736x/d8/ea/ba/d8eaba574b0e2443219800193631ca9e.jpg?w=800"
+  },
+  {
+    name: "Strawberry Cupcake",
+    price: "$6",
+    img: "https://celebratingsweets.com/wp-content/uploads/2018/06/Strawberry-Shortcake-Cake-6.jpg?w=800"
+  },
+  {
+    name: "Vanilla Cream Donut",
+    price: "$5",
+    img: "https://images.unsplash.com/photo-1509365465985-25d11c17e812?w=800"
+  },
+  {
+    name: "Blueberry Muffin",
+    price: "$4",
+    img: "https://images.unsplash.com/photo-1587668178277-295251f900ce?w=800"
+  }
+];
+      return (
+        <div className="container">
+          <h2>Fresh, Homemade & Delicious</h2>
+          <p className="subtitle">Premium bakery treats baked with love.</p>
+
+          <h3>Your Cart: {count} items 🛒</h3>
+
+          <div className="menu-grid">
+            {menu.map((item, index) => (
+              <div className="item-card" key={index}>
+                <img src={item.img} alt={item.name} />
+                <h3>{item.name}</h3>
+                <div className="price">{item.price}</div>
+                <button onClick={() => setCount(count + 1)}>
+                  Add to Cart
+                </button>
+              </div>
+            ))}
+          </div>
+        </div>
+      );
+    }
+    ReactDOM.createRoot(document.getElementById("root")).render(<BakeryApp />);
+  </script>
+  <footer>© 2025 Sweet Bliss Bakery • Crafted with Love</footer>
+</body>
+</html>
